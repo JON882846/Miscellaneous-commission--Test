@@ -27,7 +27,7 @@ class MainKtTest {
     @Test
     fun commCalc_Visa_if() {
         //arrange
-        val amount_ = 105000_00
+        val amount_ = 105000_0
         val card_ = "Visa"
         val prevTrans_ = 1007_00
         //act
