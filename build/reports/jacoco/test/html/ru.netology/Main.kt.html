@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Miscellaneous-commission-test</a> &gt; <a href="index.source.html" class="el_package">ru.netology</a> &gt; <span class="el_source">Main.kt</span></div><h1>Main.kt</h1><pre class="source lang-java linenums">package ru.netology
+
+const val NAME_CARD_VK_PAY = &quot;VK Pay&quot;
+const val NAME_CARD_VISA = &quot;Visa&quot;
+const val NAME_CARD_MAESTRO = &quot;Maestro&quot;
+const val NAME_CARD_MASTERCARD= &quot;Mastercard&quot;
+const val NAME_CARD_MIR = &quot;Mir&quot;
+
+
+fun main() {
+
+<span class="nc" id="L12">    val СЃommissVK = commCalc(1000_00, prevTrans = 17_00)</span>
+<span class="nc" id="L13">    val СЃommissVKRub = messageRuble(СЃommissVK)</span>
+<span class="nc" id="L14">    val СЃommissVKPen = messagePenny(СЃommissVK)</span>
+<span class="nc" id="L15">    println(&quot;РљРѕРјРјРёСЃРёСЏ Р·Р° РїРµСЂРµРІРѕРґ РїРѕ РєР°СЂС‚Рµ СЂР°РІРЅР°:\&quot;VK Pay\&quot; $СЃommissVKRub СЂСѓР±Р»РµР№ $СЃommissVKPen РєРѕРїРµРµРє&quot; )</span>
+
+<span class="nc" id="L17">    val СЃommissVisa = commCalc(105000_00, card = &quot;Visa&quot;, prevTrans = 1007_00)</span>
+<span class="nc" id="L18">    val СЃommissVisaRub = messageRuble(СЃommissVisa)</span>
+<span class="nc" id="L19">    val СЃommissVisaPen = messagePenny(СЃommissVisa)</span>
+<span class="nc" id="L20">    println(&quot;РљРѕРјРјРёСЃРёСЏ Р·Р° РїРµСЂРµРІРѕРґ РїРѕ РєР°СЂС‚Рµ СЂР°РІРЅР°:\&quot;Visa\&quot; $СЃommissVisaRub СЂСѓР±Р»РµР№ $СЃommissVisaPen РєРѕРїРµРµРє&quot; )</span>
+
+<span class="nc" id="L22">    val СЃommissMaestro = commCalc(1000_00, card = &quot;Maestro&quot;, prevTrans = 17525_00)</span>
+    // message(c,&quot;Maestro&quot;)
+<span class="nc" id="L24">    val СЃommissMaestroRub = messageRuble(СЃommissMaestro)</span>
+<span class="nc" id="L25">    val СЃommissMaestroPen = messagePenny(СЃommissMaestro)</span>
+<span class="nc" id="L26">    println(&quot;РљРѕРјРјРёСЃРёСЏ Р·Р° РїРµСЂРµРІРѕРґ РїРѕ РєР°СЂС‚Рµ СЂР°РІРЅР°:\&quot;Maestro\&quot; $СЃommissMaestroRub СЂСѓР±Р»РµР№ $СЃommissMaestroPen РєРѕРїРµРµРє&quot; )</span>
+
+<span class="nc" id="L28">    val СЃommissMir = commCalc(1000_00, card = &quot;Mir&quot;, prevTrans = 1457_00)</span>
+<span class="nc" id="L29">    val СЃommissMirRub = messageRuble(СЃommissMir)</span>
+<span class="nc" id="L30">    val СЃommissMirPen = messagePenny(СЃommissMir)</span>
+<span class="nc" id="L31">    println(&quot;РљРѕРјРјРёСЃРёСЏ Р·Р° РїРµСЂРµРІРѕРґ РїРѕ РєР°СЂС‚Рµ СЂР°РІРЅР°:\&quot;Mir\&quot; $СЃommissMirRub СЂСѓР±Р»РµР№ $СЃommissMirPen РєРѕРїРµРµРє&quot; )</span>
+
+<span class="nc" id="L33">    val СЃommissMaster = commCalc(100300_00, card = &quot;Mastercard&quot;, prevTrans = 17000_00)</span>
+<span class="nc" id="L34">    val СЃommissMasterRub = messageRuble(СЃommissMaster)</span>
+<span class="nc" id="L35">    val СЃommissMasterPen = messagePenny(СЃommissMaster)</span>
+<span class="nc" id="L36">    println(&quot;РљРѕРјРјРёСЃРёСЏ Р·Р° РїРµСЂРµРІРѕРґ РїРѕ РєР°СЂС‚Рµ СЂР°РІРЅР°:\&quot;Mastercard\&quot; $СЃommissMasterRub СЂСѓР±Р»РµР№ $СЃommissMasterPen РєРѕРїРµРµРє&quot; )</span>
+<span class="nc" id="L37">}</span>
+
+fun messageRuble(
+    СЃommission: Int
+): Int {
+<span class="fc" id="L42">    val ruble = (СЃommission/100)</span>
+<span class="fc" id="L43">    return ruble</span>
+}
+
+
+fun messagePenny(
+    СЃommission: Int
+): Int {
+<span class="fc" id="L50">    val ruble = (СЃommission/100)</span>
+<span class="fc" id="L51">    val result = (СЃommission.toDouble()/100)</span>
+<span class="fc" id="L52">    val penny =  ((result - (ruble))*100).toInt()</span>
+<span class="fc" id="L53">    return penny</span>
+}
+
+<span class="nc" id="L56">fun commCalc (</span>
+    amount: Int,
+<span class="nc" id="L58">    card: String = &quot;VK Pay&quot;,</span>
+<span class="nc" id="L59">    prevTrans: Int = 0</span>
+): Int{
+<span class="fc bfc" id="L61" title="All 4 branches covered.">    return when (card){</span>
+        NAME_CARD_VK_PAY-&gt; {
+<span class="fc" id="L63">            0</span>
+        }
+        NAME_CARD_MAESTRO,NAME_CARD_MASTERCARD-&gt; {
+<span class="fc" id="L66">            val summTransMax = 75000_00</span>
+<span class="fc" id="L67">            val СЃommission = 0.6</span>
+<span class="fc" id="L68">            val СЃommissionFixed = 20_00</span>
+
+<span class="fc" id="L70">            val result = amount + prevTrans</span>
+
+<span class="fc bfc" id="L72" title="All 2 branches covered.">            if (result &gt; summTransMax) {</span>
+<span class="fc" id="L73">                return (((amount/100 * СЃommission)) + СЃommissionFixed).toInt()</span>
+            } else {
+<span class="fc" id="L75">                0</span>
+            }
+        }
+        NAME_CARD_VISA,NAME_CARD_MIR-&gt;{
+<span class="fc" id="L79">            val СЃommission = 0.75</span>
+<span class="fc" id="L80">            val fixedCommission = 3500</span>
+<span class="fc" id="L81">            val result = (((amount/100 * СЃommission))).toInt()</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">            return if(result&gt;=fixedCommission){</span>
+<span class="fc" id="L83">                result</span>
+            }else{
+<span class="fc" id="L85">                fixedCommission</span>
+            }
+        }
+        else -&gt; {
+<span class="fc" id="L89">            return 0</span>
+        }
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
